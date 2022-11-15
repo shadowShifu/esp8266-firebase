@@ -1,8 +1,5 @@
-#include <ESP8266WiFi.h>
-#include <FirebaseESP8266.h>
-
-#define WIFI_SSID "Shadow"
-#define WIFI_PASSWORD "smmres01234"
+#include "wifiManager.h"     
+#include <FirebaseESP8266.h>      
 
 #define API_KEY "a1Se8grBKEpga12uWOacQYdtNLYBsu0bF9tetWTq"
 
@@ -19,20 +16,9 @@ bool foco;
 void setup()
 {
 
-  Serial.begin(115200);
+  conectarWifi();
   pinMode(led, OUTPUT);
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.print("Connecting to Wi-Fi");
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    Serial.print(".");
-    delay(300);
-  }
-  Serial.println();
-  Serial.print("Connected with IP: ");
-  Serial.println(WiFi.localIP());
-  Serial.println();
-
+ 
   Serial.printf("Firebase Client v%s\n\n", FIREBASE_CLIENT_VERSION);
 
   
